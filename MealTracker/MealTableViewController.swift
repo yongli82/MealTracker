@@ -119,5 +119,15 @@ class MealTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.sourceViewController as? MealViewController,
+            meal = sourceViewController.meal {
+            // Add a new meal.
+            let newIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+            meals.insert(meal, atIndex: 0)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Top)
+        }
+    }
 
 }
